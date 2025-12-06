@@ -33,30 +33,6 @@ const dummyProducts: Record<string, Product> = {
   },
 };
 
-export default function ProductPage({ params }: { params: { id: string } }) {
-
-  <pre>{JSON.stringify(params, null, 2)}</pre>;
-
-  const product = dummyProducts[params.id];
-
-  if (!product) {
-    return <div className="p-10 text-center">商品が見つかりません。</div>;
-  }
-
-  return (
-    <main className="p-10 max-w-2xl mx-auto">
-      <img
-        src={product.image}
-        alt={product.name}
-        className="w-full h-auto rounded-lg mb-6"
-      />
-
-      <h1 className="text-3xl font-bold mb-3">{product.name}</h1>
-      <p className="text-lg text-gray-600 mb-4">
-        {product.price.toLocaleString()}円
-      </p>
-
-      <p className="text-base leading-relaxed">{product.description}</p>
-    </main>
-  );
+export default function Page({ params }: { params: { id: string } }) {
+  return <pre>{JSON.stringify(params, null, 2)}</pre>;
 }
