@@ -1,51 +1,65 @@
+// app/page.tsx
+
+import Link from "next/link";
+
 export default function Home() {
-  // 仮の商品データ
+  // ★ 今は仮データ。後で Supabase に置き換える。
   const products = [
     {
       id: 1,
-      name: "Leather Wallet",
-      price: 12000,
+      name: "Handmade Leather Wallet",
+      price: 18000,
       image: "/sample1.jpg",
     },
     {
       id: 2,
-      name: "Handmade Bag",
-      price: 28000,
+      name: "Leather Card Case",
+      price: 8000,
       image: "/sample2.jpg",
     },
     {
       id: 3,
-      name: "Small Coin Case",
+      name: "Coin Purse",
       price: 6000,
       image: "/sample3.jpg",
     },
   ];
 
   return (
-    <main className="max-w-5xl mx-auto px-6 py-12">
-      {/* ブランド名 */}
-      <h1 className="text-4xl font-bold mb-10 tracking-wide">Myshop</h1>
+    <main className="min-h-screen bg-white">
+      {/* Header */}
+      <header className="py-8 px-6 text-center border-b border-gray-200">
+        <h1 className="text-3xl font-light tracking-wide">Myshop</h1>
+      </header>
 
-      {/* 商品一覧 */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className="border rounded-xl overflow-hidden shadow-sm hover:shadow-md transition"
-          >
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-full h-56 object-cover"
-            />
+      {/* Product Section */}
+      <section className="px-6 py-10 max-w-6xl mx-auto">
+        <h2 className="text-lg font-medium mb-6 text-gray-700 tracking-wide">
+          PRODUCTS
+        </h2>
 
-            <div className="p-4">
-              <h2 className="text-lg font-medium">{product.name}</h2>
-              <p className="text-gray-600 mt-1">¥{product.price.toLocaleString()}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          {products.map((p) => (
+            <Link key={p.id} href={`/products/${p.id}`}>
+              <div className="group cursor-pointer">
+                <div className="w-full aspect-[4/5] overflow-hidden rounded-lg bg-gray-100">
+                  <img
+                    src={p.image}
+                    alt={p.name}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+
+                <div className="mt-3">
+                  <p className="font-medium text-gray-900">{p.name}</p>
+                  <p className="text-gray-600">¥{p.price.toLocaleString()}</p>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }
