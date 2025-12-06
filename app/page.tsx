@@ -4,26 +4,27 @@ import Link from "next/link";
 
 export default function Home() {
   // ★ 今は仮データ。後で Supabase に置き換える。
-  const products = [
-    {
-      id: 1,
-      name: "Handmade Leather Wallet",
-      price: 18000,
-      image: "/sample1.jpg",
-    },
-    {
-      id: 2,
-      name: "Leather Card Case",
-      price: 8000,
-      image: "/sample2.jpg",
-    },
-    {
-      id: 3,
-      name: "Coin Purse",
-      price: 6000,
-      image: "/sample3.jpg",
-    },
-  ];
+const products = [
+  {
+    id: "1",
+    name: "Handmade Leather Wallet",
+    price: 18000,
+    image: "/sample1.jpg",
+  },
+  {
+    id: "2",
+    name: "Leather Card Case",
+    price: 8000,
+    image: "/sample2.jpg",
+  },
+  {
+    id: "3",
+    name: "Coin Purse",
+    price: 6000,
+    image: "/sample3.jpg",
+  },
+];
+
 
   return (
     <main className="min-h-screen bg-white">
