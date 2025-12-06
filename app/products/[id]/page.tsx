@@ -34,6 +34,9 @@ const dummyProducts: Record<string, Product> = {
 };
 
 export default function ProductPage({ params }: { params: { id: string } }) {
+
+  <pre>{JSON.stringify(params, null, 2)}</pre>;
+
   const product = dummyProducts[params.id];
 
   if (!product) {
