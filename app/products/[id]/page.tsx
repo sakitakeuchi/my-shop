@@ -1,5 +1,7 @@
 // app/products/[id]/page.tsx
 
+import React from "react";
+
 type Product = {
   id: string;
   name: string;
@@ -34,5 +36,30 @@ const dummyProducts: Record<string, Product> = {
 };
 
 export default function Page({ params }: { params: { id: string } }) {
-  return <pre>{JSON.stringify(params, null, 2)}</pre>;
+  
+  // return <div>id = {params.id}</div>;
+
+  const product = dummyProducts[params.id];
+
+  if (!product) {
+    return <div>商品が見つかりません。ID: {params.id}</div>;
+  }
+
+  return (
+    <div style={{ padding: "40px", maxWidth: "600px", margin: "0 auto" }}>
+      <img
+        src={product.image}
+        alt={product.name}
+        style={{ width: "100%", borderRadius: "8px" }}
+      />
+
+      <h1 style={{ marginTop: "20px", fontSize: "28px" }}>{product.name}</h1>
+
+      <p style={{ fontSize: "20px", fontWeight: "bold" }}>
+        ¥{product.price.toLocaleString()}
+      </p>
+
+      <p style={{ marginTop: "20px", lineHeight: 1.8 }}>{product.description}</p>
+    </div>
+  );
 }
